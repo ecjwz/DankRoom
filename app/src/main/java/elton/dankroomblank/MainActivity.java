@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 timer.start();
                 btnWood.setEnabled(false);
-                woodcount+=11;
+                woodcount+=10;
                 String message = "Wood: " + woodcount;
                 wood.setText(message);
 
