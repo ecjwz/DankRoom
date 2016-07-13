@@ -40,7 +40,7 @@
         android:layout_alignParentStart="true" />
 
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/textViewTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,18 +49,11 @@
         android:layout_centerInParent="true"
         android:layout_alignStart="@id/btnWood"
         android:layout_alignEnd="@id/btnWood"
-        android:textAlignment="center" />
+        android:textAlignment="center" /> -->
 
-    <Button
-        android:id="@+id/btnTraps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Check Traps"
-        android:layout_below="@+id/textViewTime"
-        android:layout_alignStart="@+id/btnWood"
-        android:layout_marginTop="26dp" />
 
-    <TextView
+
+  <!--  <TextView
         android:id="@+id/textViewTraps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +61,7 @@
         android:layout_below="@+id/btnTraps"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/btnTraps"
-        android:textAlignment="center" />
+        android:textAlignment="center" /> -->
 
     <TextView
         android:id="@+id/textViewGatherer"
@@ -132,5 +125,57 @@
         android:layout_above="@+id/btnWood"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/btnTraps" />
+
+    <Button
+        android:id="@+id/angry_btn"
+
+        android:text="^"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_marginEnd="37dp"
+        android:layout_alignTop="@+id/textViewCharcutier"
+        android:layout_alignParentEnd="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/furProgressBar"
+        android:layout_below="@+id/textViewCharcutier"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/btnTraps" />
+
+    <Button
+        android:id="@+id/btnTraps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Traps"
+        android:layout_below="@+id/furProgressBar"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/down"
+
+        android:text="v"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_alignTop="@+id/angry_btn"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

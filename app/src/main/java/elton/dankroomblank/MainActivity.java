@@ -13,6 +13,10 @@ import org.w3c.dom.Text;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+import android.animation.ObjectAnimator;
+import android.animation.Animator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewCharcutier;
     public int woodcount=0;
     public int trapcount=0;
+    ProgressBar woodbar;
+    ProgressBar furbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
         btnWood = (Button) findViewById(R.id.btnWood);
         btnTraps = (Button) findViewById(R.id.btnTraps);
         //btnStop = (Button) findViewById(R.id.btnStop);
-        textViewTime = (TextView) findViewById(R.id.textViewTime);
-        textViewTraps = (TextView) findViewById(R.id.textViewTraps);
+        //textViewTime = (TextView) findViewById(R.id.textViewTime);
+        //textViewTraps = (TextView) findViewById(R.id.textViewTraps);
         textViewGatherer = (TextView) findViewById(R.id.textViewGatherer);
         textViewCharcutier = (TextView) findViewById(R.id.textViewCharcutier);
+        woodbar = (ProgressBar)findViewById(R.id.woodProgressBar);
+        furbar = (ProgressBar) findViewById(R.id.furProgressBar);
 
-        textViewTime.setText("00:00:05");
+        //textViewTime.setText("00:00:05");
 
         final CounterClass timer = new CounterClass(5000, 1000);
         btnWood.setOnClickListener(new View.OnClickListener() {
@@ -53,10 +61,28 @@ public class MainActivity extends AppCompatActivity {
                 woodcount+=10;
                 String message = "Wood: " + woodcount;
                 wood.setText(message);
+
+                ObjectAnimator animation = ObjectAnimator.ofInt(woodbar,"progress", 100, 0);
+                animation.setDuration(5000);
+                animation.setInterpolator(new DecelerateInterpolator());
+                animation.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) { }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) { }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) { }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) { }
+                });
+                animation.start();
             }
         });
 
-        textViewTraps.setText("00:00:05");
+        //textViewTraps.setText("00:00:05");
 
         final CounterClas time = new CounterClas(5000, 1000);
         btnTraps.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +93,24 @@ public class MainActivity extends AppCompatActivity {
                 trapcount++;
                 String message2 = "Fur: " + trapcount;
                 traps.setText(message2);
+
+                ObjectAnimator animation = ObjectAnimator.ofInt(furbar,"progress", 100, 0);
+                animation.setDuration(5000);
+                animation.setInterpolator(new DecelerateInterpolator());
+                animation.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) { }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) { }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) { }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) { }
+                });
+                animation.start();
             }
         });
 
@@ -85,14 +129,14 @@ public class MainActivity extends AppCompatActivity {
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
             System.out.println(hms);
-            textViewTime.setText(hms);
+            //textViewTime.setText(hms);
         }
 
 
 
         @Override
         public void onFinish() {
-            textViewTime.setText("00:00:05");
+            //textViewTime.setText("00:00:05");
             btnWood.setEnabled(true);
             Timer t = new Timer();
             t.scheduleAtFixedRate(new TimerTask() {
@@ -122,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
             System.out.println(hms);
-            textViewTraps.setText(hms);
+            //textViewTraps.setText(hms);
 
         }
 
         @Override
         public void onFinish() {
-            textViewTraps.setText("00:00:05");
+            //textViewTraps.setText("00:00:05");
             btnTraps.setEnabled(true);
         }
     }
