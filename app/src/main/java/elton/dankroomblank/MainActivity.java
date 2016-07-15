@@ -20,7 +20,7 @@ import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnWood, btnStop, btnTraps;
+    Button btnWood, btnStop, btnTraps, btncharcutierup, btncharcutierdown;
     TextView textViewTime;
     TextView textViewTraps;
     TextView wood;
@@ -29,8 +29,11 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewCharcutier;
     public int woodcount=0;
     public int trapcount=0;
+    public int charcutiercount=0;
     ProgressBar woodbar;
     ProgressBar furbar;
+    TextView charcutier;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         textViewCharcutier = (TextView) findViewById(R.id.textViewCharcutier);
         woodbar = (ProgressBar)findViewById(R.id.woodProgressBar);
         furbar = (ProgressBar) findViewById(R.id.furProgressBar);
+        btncharcutierup = (Button) findViewById(R.id.charcutierup);
+        btncharcutierdown = (Button) findViewById(R.id.charcutierdown);
+        charcutier = (TextView) findViewById(R.id.textViewCharcutiercount);
 
         //textViewTime.setText("00:00:05");
 
@@ -58,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 timer.start();
                 btnWood.setEnabled(false);
-                woodcount+=10;
-                String message = "Wood: " + woodcount;
+                //woodcount+=10;
+                //woodstore(woodcount+10);
+                String message = "Wood: " + woodstore(woodcount+10);
                 wood.setText(message);
 
                 ObjectAnimator animation = ObjectAnimator.ofInt(woodbar,"progress", 100, 0);
@@ -111,6 +118,22 @@ public class MainActivity extends AppCompatActivity {
                     public void onAnimationRepeat(Animator animator) { }
                 });
                 animation.start();
+            }
+        });
+
+        btncharcutierup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (woodcount > 50) {
+                    woodcount -= 50;
+                    charcutiercount+=1;
+                    charcutier.setText(charcutiercount);
+                    wood.setText(woodcount);
+                }
+                else if (woodcount < 50)
+                {
+                    btncharcutierup.setEnabled(false);
+                }
             }
         });
 
@@ -176,4 +199,10 @@ public class MainActivity extends AppCompatActivity {
             btnTraps.setEnabled(true);
         }
     }
+
+   public int woodstore (int x)
+   {
+       int num =x;
+       return num;
+   }
 }
