@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView traps;
     TextView textViewGatherer;
     TextView textViewCharcutier;
-    public int woodcount=0;
+    int woodcount=0;
     public int trapcount=0;
     public int charcutiercount=0;
     ProgressBar woodbar;
@@ -64,14 +64,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 timer.start();
                 btnWood.setEnabled(false);
-                //woodcount+=10;
-                //woodstore(woodcount+10);
                 String message = "Wood: " + woodstore(woodcount+10);
                 wood.setText(message);
 
                 ObjectAnimator animation = ObjectAnimator.ofInt(woodbar,"progress", 100, 0);
                 animation.setDuration(5000);
-                animation.setInterpolator(new DecelerateInterpolator());
                 animation.addListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animator) { }
@@ -103,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
                 ObjectAnimator animation = ObjectAnimator.ofInt(furbar,"progress", 100, 0);
                 animation.setDuration(5000);
-                animation.setInterpolator(new DecelerateInterpolator());
                 animation.addListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animator) { }
@@ -124,13 +120,13 @@ public class MainActivity extends AppCompatActivity {
         btncharcutierup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (woodcount > 50) {
-                    woodcount -= 50;
-                    charcutiercount+=1;
-                    charcutier.setText(charcutiercount);
-                    wood.setText(woodcount);
+                int wd = woodstore(woodcount);
+                if (wd >= 10) {
+                    charcutiercount += 1;
+                    charcutier.setText(" " + charcutiercount);
+                    wood.setText("Wood: " + woodstore(woodcount - 10));
                 }
-                else if (woodcount < 50)
+                else if (wd < 10)
                 {
                     btncharcutierup.setEnabled(false);
                 }
@@ -202,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
    public int woodstore (int x)
    {
-       int num =x;
-       return num;
+       woodcount=x;
+       return x;
    }
 }

@@ -70,7 +70,7 @@
         android:text="gatherer"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="120dp"
         android:textSize="20sp"/>
 
     <TextView
@@ -81,14 +81,16 @@
         android:layout_below="@id/textViewGatherer"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="120dp"
         android:textSize="20sp"/>
     <TextView
         android:id="@+id/textViewCharcutiercount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/woodProgressBar"
-        android:layout_alignEnd="@+id/textViewGatherer" />
+        android:layout_marginEnd="21dp"
+        android:layout_alignTop="@+id/textViewCharcutier"
+        android:layout_toStartOf="@+id/charcutierup"
+        android:layout_alignParentEnd="false" />
 
     <TextView
         android:id="@+id/textViewHunter"
@@ -98,7 +100,7 @@
         android:layout_below="@id/textViewCharcutier"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="120dp"
         android:textSize="20sp"/>
 
     <TextView
@@ -109,7 +111,7 @@
         android:layout_below="@id/textViewHunter"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="120dp"
         android:textSize="20sp"/>
 
     <TextView
@@ -120,7 +122,7 @@
         android:layout_below="@id/textViewTanner"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="120dp"
         android:textSize="20sp"/>
 
     <ProgressBar
